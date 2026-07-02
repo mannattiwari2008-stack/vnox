@@ -1,0 +1,606 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>𝗡𝗨𝗠𝗕𝗘𝗥 𝗣𝗥𝗘𝗗𝗜𝗖𝗧𝗜𝗢𝗡 𝗣𝗢𝗧</title>
+   <!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '27726629740307248');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=27726629740307248&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap');
+
+        :root {
+            --bg-deep: #050B18;
+            --accent-sapphire: #00AEEF;
+            --accent-cyan: #00F5FF;
+            --accent-violet: #7B61FF;
+            --text-main: #ffffff;
+            --text-muted: #8E9BAE;
+            --glass-bg: rgba(10, 20, 40, 0.6);
+            --glass-border: rgba(0, 245, 255, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body, html {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Animated Grid Background & Effects */
+        .cyber-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background-image: 
+                linear-gradient(rgba(0, 174, 239, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 174, 239, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 0;
+            pointer-events: none;
+            perspective: 1000px;
+        }
+        
+        .cyber-bg::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; width: 100%; height: 60%;
+            background: linear-gradient(to top, rgba(5, 11, 24, 1), transparent);
+        }
+
+        .ambient-glow {
+            position: fixed;
+            top: 20%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60vw; height: 60vw;
+            background: radial-gradient(circle, rgba(123, 97, 255, 0.15) 0%, rgba(0, 174, 239, 0.05) 40%, transparent 70%);
+            filter: blur(60px);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 4rem 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* Glassmorphism Utilities */
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Animations */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUpAnim 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+
+        @keyframes fadeUpAnim {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* VIP Badge / Logo */
+        .vip-badge-wrapper {
+            position: relative;
+            width: 140px; height: 140px;
+            margin-bottom: 2rem;
+            display: flex; justify-content: center; align-items: center;
+        }
+
+        .neon-ring {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            background: linear-gradient(var(--bg-deep), var(--bg-deep)) padding-box, 
+                        linear-gradient(45deg, var(--accent-cyan), var(--accent-violet), var(--accent-sapphire)) border-box;
+            animation: spin 4s linear infinite;
+            box-shadow: 0 0 25px rgba(0, 245, 255, 0.3);
+        }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        .vip-logo {
+            width: 120px; height: 120px;
+            border-radius: 50%;
+            background: #0a1128;
+            object-fit: cover;
+            display: flex; justify-content: center; align-items: center;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 2rem;
+            color: var(--accent-cyan);
+            text-shadow: 0 0 10px var(--accent-cyan);
+            z-index: 2;
+            border: 1px solid rgba(0, 245, 255, 0.3);
+        }
+
+        /* Typography */
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
+
+        p.subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        /* Scarcity Banner */
+        .scarcity-alert {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            border: 1px solid rgba(0, 245, 255, 0.4);
+            background: rgba(0, 174, 239, 0.1);
+            color: var(--accent-cyan);
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            animation: pulse-glow 2s infinite;
+        }
+
+        .scarcity-alert::before {
+            content: '';
+            display: inline-block;
+            width: 8px; height: 8px;
+            background: var(--accent-cyan);
+            border-radius: 50%;
+            margin-right: 10px;
+            box-shadow: 0 0 10px var(--accent-cyan);
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(0, 245, 255, 0.2); }
+            50% { box-shadow: 0 0 20px 0 rgba(0, 245, 255, 0.6); }
+        }
+
+        /* Typewriter */
+        .typewriter-box {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            color: var(--accent-violet);
+            height: 30px;
+            margin-bottom: 3rem;
+            font-weight: 500;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px; height: 3px;
+            background: var(--accent-cyan);
+            animation: blink 0.8s infinite;
+            vertical-align: bottom;
+            margin-left: 4px;
+            margin-bottom: 4px;
+            box-shadow: 0 0 8px var(--accent-cyan);
+        }
+
+        /* Social Proof Cards */
+        .proof-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            width: 100%;
+            margin-bottom: 3rem;
+        }
+
+        .proof-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .proof-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(123, 97, 255, 0.5);
+            box-shadow: 0 12px 40px rgba(123, 97, 255, 0.2);
+        }
+
+        .proof-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .avatar-group { display: flex; }
+        .avatar-group img {
+            width: 45px; height: 45px;
+            border-radius: 50%;
+            border: 2px solid var(--bg-deep);
+            margin-left: -15px;
+            box-shadow: 0 0 15px rgba(0, 174, 239, 0.4);
+        }
+        .avatar-group img:first-child { margin-left: 0; }
+
+        .proof-text {
+            text-align: left;
+        }
+        .proof-text h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.2rem;
+            color: #fff;
+        }
+        .proof-text p {
+            font-size: 0.85rem;
+            color: var(--accent-cyan);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .online-dot {
+            width: 6px; height: 6px;
+            background: #00FF66;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #00FF66;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(90deg, var(--accent-sapphire), var(--accent-cyan));
+            color: #050B18;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            letter-spacing: 1px;
+            width: 100%;
+            max-width: 350px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 174, 239, 0.3);
+            margin-bottom: 2rem;
+        }
+
+        .cta-button::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+            transform: skewX(-20deg);
+            animation: cyberShine 3s infinite;
+        }
+
+        @keyframes cyberShine {
+            0% { left: -100%; }
+            20% { left: 200%; }
+            100% { left: 200%; }
+        }
+
+        .cta-button:hover {
+            transform: scale(1.03) translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 245, 255, 0.5);
+        }
+
+        /* Sapphire Particles */
+        .particle {
+            position: fixed;
+            background: var(--accent-sapphire);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            z-index: 1;
+            box-shadow: 0 0 15px var(--accent-cyan);
+        }
+
+        /* Reviews Section */
+        .reviews-section {
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            color: var(--accent-cyan);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .review-card {
+            padding: 1.5rem;
+            text-align: left;
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 245, 255, 0.4);
+            box-shadow: 0 12px 40px rgba(0, 245, 255, 0.2);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .review-avatar {
+            width: 45px; height: 45px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-sapphire);
+        }
+
+        .review-meta h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            color: #fff;
+            margin-bottom: 2px;
+            font-size: 1.1rem;
+        }
+
+        .stars {
+            color: #FFD700;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+
+        .review-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.2rem; }
+            .vip-badge-wrapper { width: 110px; height: 110px; }
+            .vip-logo { width: 95px; height: 95px; font-size: 1.5rem; }
+            .typewriter-box { font-size: 1rem; }
+            .scarcity-alert { font-size: 0.8rem; padding: 0.6rem 1.2rem; }
+            .proof-card { flex-direction: column; gap: 1rem; text-align: center; }
+            .proof-left { flex-direction: column; }
+            .proof-text { text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="cyber-bg"></div>
+    <div class="ambient-glow"></div>
+
+    <div class="container">
+        
+        <!-- Animated VIP Badge -->
+        <div class="vip-badge-wrapper fade-up">
+            <div class="neon-ring"></div>
+            <img src="https://i.ibb.co/hFFGS3nx/Whats-App-Image-2026-06-09-at-11-46-15-AM.jpg" alt="VIP Logo" class="vip-logo">
+        </div>
+
+        <!-- Headline & Subheadline -->
+        <h1 class="fade-up delay-1">𝗡𝗨𝗠𝗕𝗘𝗥 𝗣𝗥𝗘𝗗𝗜𝗖𝗧𝗜𝗢𝗡 𝗣𝗢𝗧</h1>
+        <p class="subtitle fade-up delay-2">Exclusive access to premium daily signals, insider opportunities, and elite member resources.</p>
+
+        <!-- Scarcity Alert -->
+        <div class="scarcity-alert fade-up delay-3">
+            ONLY 25 FREE ACCESS PASSES AVAILABLE TODAY
+        </div>
+
+        <!-- Dynamic Typewriter -->
+        <div class="typewriter-box fade-up delay-4">
+            <span id="typewriter"></span><span class="cursor"></span>
+        </div>
+
+        <!-- CTA Section -->
+        <!-- TELEGRAM_LINK_START -->
+        <div class="fade-up delay-5" style="width: 100%; display: flex; justify-content: center;">
+            <a href="https://t.me/+svqyy70PGtYyMDM1" class="cta-button" target="_blank" rel="noopener noreferrer">REQUEST VIP ACCESS</a>
+        </div>
+        <!-- TELEGRAM_LINK_END -->
+
+        <!-- Social Proof Section -->
+        <div class="proof-container fade-up delay-5">
+            <div class="proof-card glass-panel">
+                <div class="proof-left">
+                    <div class="avatar-group">
+                        <img src="https://i.pravatar.cc/100?img=1" alt="User">
+                        <img src="https://i.pravatar.cc/100?img=2" alt="User">
+                        <img src="https://i.pravatar.cc/100?img=3" alt="User">
+                        <img src="https://i.pravatar.cc/100?img=4" alt="User">
+                    </div>
+                    <div class="proof-text">
+                        <h3>15,400+ Active Members</h3>
+                        <p><span class="online-dot"></span> <span id="online-count">1,243</span> online right now</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Member Reviews -->
+        <div class="reviews-section fade-up delay-5">
+            <h2 class="section-title">Success Stories</h2>
+            <div class="reviews-grid">
+                <div class="review-card glass-panel">
+                    <div class="review-header">
+                        <img src="https://i.pravatar.cc/100?img=11" alt="Rahul S." class="review-avatar">
+                        <div class="review-meta">
+                            <h4>Rahul S.</h4>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"I was skeptical at first, but the signals are incredibly accurate. Doubled my bankroll in just 3 days! Best private network out there."</p>
+                </div>
+                <div class="review-card glass-panel">
+                    <div class="review-header">
+                        <img src="https://i.pravatar.cc/100?img=5" alt="Priya K." class="review-avatar">
+                        <div class="review-meta">
+                            <h4>Priya K.</h4>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"The risk management strategies they teach are gold. I make consistent daily profits without stressing over losses. Highly recommended."</p>
+                </div>
+                <div class="review-card glass-panel">
+                    <div class="review-header">
+                        <img src="https://i.pravatar.cc/100?img=8" alt="Vikram R." class="review-avatar">
+                        <div class="review-meta">
+                            <h4>Vikram R.</h4>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"Joined yesterday and already made ₹4,500 profit. The Telegram community is super active and the admins are very helpful."</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Cyber Typewriter
+        const cyberPhrases = [
+            "Premium Daily Signals",
+            "Exclusive VIP Insights",
+            "High Accuracy Opportunities",
+            "Members-Only Resources",
+            "Private Community Access"
+        ];
+        
+        let i = 0;
+        let isDeleting = false;
+        let textPos = 0;
+        let currentPhrase = cyberPhrases[i];
+
+        function type() {
+            const el = document.getElementById("typewriter");
+            
+            if (isDeleting) {
+                el.innerText = currentPhrase.substring(0, textPos - 1);
+                textPos--;
+            } else {
+                el.innerText = currentPhrase.substring(0, textPos + 1);
+                textPos++;
+            }
+
+            let speed = 60;
+            if (isDeleting) speed = 30;
+
+            if (!isDeleting && textPos === currentPhrase.length) {
+                speed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && textPos === 0) {
+                isDeleting = false;
+                i = (i + 1) % cyberPhrases.length;
+                currentPhrase = cyberPhrases[i];
+                speed = 500;
+            }
+
+            setTimeout(type, speed);
+        }
+
+        // Sapphire Particles
+        function spawnParticle() {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            const size = Math.random() * 4 + 2;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.top = '110vh'; // start below screen
+            
+            const duration = Math.random() * 5 + 5;
+            particle.style.transition = `transform ${duration}s linear, opacity ${duration/2}s ease-in-out`;
+            
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.style.opacity = '0.6';
+                particle.style.transform = `translateY(-120vh) translateX(${Math.random() * 100 - 50}px)`;
+            }, 50);
+
+            setTimeout(() => {
+                particle.style.opacity = '0';
+                setTimeout(() => particle.remove(), 1000);
+            }, (duration * 1000) - 1000);
+        }
+
+        // Online Counter Animation
+        function updateOnlineCount() {
+            const el = document.getElementById('online-count');
+            let current = parseInt(el.innerText.replace(',', ''));
+            const change = Math.floor(Math.random() * 11) - 5; // -5 to +5
+            current += change;
+            el.innerText = current.toLocaleString();
+        }
+
+        window.onload = () => {
+            type();
+            setInterval(spawnParticle, 300);
+            setInterval(updateOnlineCount, 3000);
+        };
+    </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"43abb2bd56434f399f7386c043206fc2","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
